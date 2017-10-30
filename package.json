@@ -4,9 +4,9 @@
   "description": "todo-react",
   "main": "server.js",
   "scripts": {
+    "start": "webpack-dev-server",
     "build": "webpack",
-    "watch": "webpack --watch",
-    "server": "webpack-dev-server"
+    "watch": "webpack --watch"
   },
   "repository": {
     "type": "git",
