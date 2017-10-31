@@ -1,9 +1,15 @@
 import React from 'react';
 
+import Task from './task.jsx'
+
 class TaskList extends React.Component {
   render() {
     return (
-      <input type="text" className="form-control" />
+      <div className="form-group">
+        <Task />
+        <Task />
+        <Task />
+      </div>
     );
   };
 }
