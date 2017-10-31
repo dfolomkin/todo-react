@@ -12,7 +12,7 @@ module.exports = {
   },
 
   output: {
-    path: path.resolve(__dirname, 'dist/js'),
+    path: path.join(__dirname, 'dist/js'),
     filename: '[name]-bundle.js'
   },
 
@@ -20,7 +20,7 @@ module.exports = {
     rules: [
       {
         test: /\.jsx$/,
-        exclude: path.resolve(__dirname, 'node_modules'),
+        exclude: path.join(__dirname, 'node_modules'),
         use: {
           loader: 'babel-loader',
           options: {
@@ -34,7 +34,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: 'todo-react',
-      filename: `${__dirname}/dist/index.html`,
+      filename: 'index.html',
       template: 'src/index.tmpl.html',
       hash: true,
       minify: {
@@ -52,10 +52,9 @@ module.exports = {
   devtool: 'source-map',
 
   devServer: {
-    contentBase: './dist',
+    contentBase: './',
     compress: true,
     port: 9000,
-    hot: true,
-    watchContentBase: true
+    hot: true
   }
 };
