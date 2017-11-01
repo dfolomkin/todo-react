@@ -10,10 +10,10 @@ const App = () => {
       <div className="row">
         <div className="col-sm-2"></div>
         <div className="col-sm-8">
-          <div className="form-group">
-          <h1>To Do</h1>
-          </div>
+          <h1>To do!</h1>
           <AddTaskBar />
+          <TaskList />
+          <h1>Done:</h1>
           <TaskList />
         </div>
         <div className="col-sm-2"></div>
