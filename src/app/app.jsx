@@ -8,6 +8,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      lastId: 3,
       tasks: [
         { id: 1, title: 'task1', done: false },
         { id: 2, title: 'task2', done: false },
@@ -21,18 +22,29 @@ class App extends React.Component {
 
   handleAdd(taskTitle) {
     this.setState(prevState => ({
-      tasks: [...prevState.tasks, { id: prevState.tasks.length + 1, title: taskTitle, done: false }]
+      lastId: ++prevState.lastId,
+      tasks: [...prevState.tasks, { id: ++prevState.lastId, title: taskTitle, done: false }]
     }));
-    console.log('sending task: ', taskTitle);
-    console.log('tasks array: ', this.state.tasks);
   }
 
-  handleDelete(e) {
-    this.setState({ });
+  handleDelete(id) {
+    this.setState(prevState => ({
+      tasks: prevState.tasks.filter(obj => obj.id !== id)
+    }));
   }
 
-  handleChangeStatus(e) {
-    this.setState({ });
+  handleChangeStatus(id) {
+    this.setState(prevState => {
+      //is this anough ummutable?
+      prevState.tasks.forEach(obj => {
+        if (obj.id === id) {
+          obj.done = !obj.done;
+        }
+      });
+      return ({
+        tasks: prevState.tasks
+      });
+    });
   }
 
   render() {
@@ -45,7 +57,7 @@ class App extends React.Component {
               powered by magic
             </div>
             <AddTaskBar onAdd={this.handleAdd} />
-            <TaskList tasks={this.state.tasks} />
+            <TaskList tasks={this.state.tasks} onCheck={this.handleChangeStatus} onDelete={this.handleDelete} />
           </div>
           <div className="col-sm-2"></div>
         </div>
