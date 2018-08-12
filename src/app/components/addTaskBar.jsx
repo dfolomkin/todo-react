@@ -29,7 +29,6 @@ export class AddTaskBarComponent extends React.Component {
   };
 
   render() {
-    console.log(this.props);
     return (
       <div className="form-group">
         <div className="input-group">

@@ -4,10 +4,10 @@ import { Task } from './task.jsx';
 import { withTasks } from '../context';
 
 const TasksListComponent = ({ tasks }) => {
-  const todoTasksArr = tasks.filter(obj => !obj.done);
-  const doneTasksArr = tasks.filter(obj => obj.done);
-  const todoTasks = todoTasksArr.map(obj => <Task key={obj.id} {...obj} />);
-  const doneTasks = doneTasksArr.map(obj => <Task key={obj.id} {...obj} />);
+  const todoTasksArr = tasks.filter(item => !item.done);
+  const doneTasksArr = tasks.filter(item => item.done);
+  const todoTasks = todoTasksArr.map(item => <Task key={item.id} {...item} />);
+  const doneTasks = doneTasksArr.map(item => <Task key={item.id} {...item} />);
 
   return (
     <div>
