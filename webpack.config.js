@@ -4,11 +4,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    vendor: [
-      'react',
-      'react-dom'
-    ],
-    app: './src/app/app.jsx'
+    vendor: ['react', 'react-dom'],
+    app: './src/index.jsx'
   },
 
   output: {
@@ -19,16 +16,21 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx$/,
+        test: /\.(js|jsx)$/,
         exclude: path.join(__dirname, 'node_modules'),
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['env', 'react']
+            presets: ['env', 'stage-2', 'react'],
+            plugins: ['transform-class-properties']
           }
         }
       }
     ]
+  },
+
+  resolve: {
+    extensions: ['.js', '.jsx']
   },
 
   plugins: [
