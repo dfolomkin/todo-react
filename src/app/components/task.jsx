@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { FormGroup, InputGroup, FormControl, Button, Glyphicon } from 'react-bootstrap';
 
 import { deleteTask, changeTaskStatus, changeTask } from '../actions';
 
@@ -50,22 +51,15 @@ class TaskComponent extends React.Component {
   };
 
   render() {
-    const icon = this.props.done ? <i className="fa fa-check" /> : <i className="fa fa-minus" />;
-
     return (
-      <div className="form-group">
+      <FormGroup>
         <div className="input-group" onDoubleClick={this.handleDoubleClick} ref={node => (this.taskInputGroup = node)}>
-          <span className="input-group-btn">
-            <button
-              className={this.props.done ? 'btn btn-success' : 'btn btn-warning'}
-              type="button"
-              onClick={this.handleCheckClick}
-            >
-              {icon}
-            </button>
-          </span>
-          <input
-            className="form-control"
+          <InputGroup.Button>
+            <Button bsStyle={this.props.done ? 'success' : 'warning'} onClick={this.handleCheckClick}>
+              <Glyphicon glyph={this.props.done ? 'ok' : 'minus'} />
+            </Button>
+          </InputGroup.Button>
+          <FormControl
             type="text"
             placeholder="Enter a task"
             value={this.state.title}
@@ -73,17 +67,17 @@ class TaskComponent extends React.Component {
             onChange={this.handleChange}
             onKeyPress={this.handleKeyPress}
             onBlur={this.handleBlur}
-            ref={node => {
+            inputRef={node => {
               this.taskInput = node;
             }}
           />
-          <span className="input-group-btn">
-            <button className="btn btn-dark" type="button" onClick={this.handleDeleteClick}>
-              <i className="fa fa-trash-o" />
-            </button>
-          </span>
+          <InputGroup.Button>
+            <Button bsStyle="danger" onClick={this.handleDeleteClick}>
+              <Glyphicon glyph="trash" />
+            </Button>
+          </InputGroup.Button>
         </div>
-      </div>
+      </FormGroup>
     );
   }
 }

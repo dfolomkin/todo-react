@@ -1,19 +1,21 @@
 import React from 'react';
+import { Grid, Row, Col, FormGroup } from 'react-bootstrap';
 
 import { AddTaskBar, TasksList } from './components';
 
 const App = () => (
-  <div className="container">
-    <div className="row">
-      <div className="col-sm-2" />
-      <div className="col-sm-8">
-        <div className="form-group pull-right">powered by redux</div>
+  <Grid>
+    <Row>
+      <Col sm={2} />
+      <Col sm={8}>
+        <FormGroup className="pull-right">powered by redux</FormGroup>
+        <div className="clearfix" />
         <AddTaskBar />
         <TasksList />
-      </div>
-      <div className="col-sm-2" />
-    </div>
-  </div>
+      </Col>
+      <Col sm={2} />
+    </Row>
+  </Grid>
 );
 
 export default App;

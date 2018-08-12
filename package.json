@@ -20,6 +20,7 @@
   "homepage": "https://github.com/dfolomkin/todo-react#readme",
   "dependencies": {
     "react": "^16.0.0",
+    "react-bootstrap": "^0.32.1",
     "react-dom": "^16.0.0",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0"

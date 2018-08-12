@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { FormGroup } from 'react-bootstrap';
 
 import { Task } from './task';
 
@@ -12,9 +13,9 @@ const TasksListComponent = ({ tasks }) => {
   return (
     <div>
       {todoTasks.length > 0 ? <h3>To do!</h3> : null}
-      <div className="form-group">{todoTasks}</div>
+      <FormGroup>{todoTasks}</FormGroup>
       {doneTasks.length > 0 ? <h3>Done:</h3> : null}
-      <div className="form-group">{doneTasks}</div>
+      <FormGroup>{doneTasks}</FormGroup>
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { FormGroup, InputGroup, FormControl, Button, Glyphicon } from 'react-bootstrap';
 
 import { addTask } from '../actions';
 
@@ -9,37 +10,38 @@ class AddTaskBarComponent extends React.Component {
   }
 
   handleKeyPress = e => {
-    if (e.key == 'Enter') {
+    if (e.key == 'Enter' && this.taskInput.value !== '') {
       this.props.onAddTask(this.taskInput.value);
       this.taskInput.value = '';
     }
   };
 
   handleAddClick = () => {
-    this.props.onAddTask(this.taskInput.value);
-    this.taskInput.value = '';
+    if (this.taskInput.value !== '') {
+      this.props.onAddTask(this.taskInput.value);
+      this.taskInput.value = '';
+    }
   };
 
   render() {
     return (
-      <div className="form-group">
-        <div className="input-group">
-          <input
-            className="form-control"
+      <FormGroup>
+        <InputGroup>
+          <FormControl
             type="text"
             placeholder="Enter new task"
             onKeyPress={this.handleKeyPress}
-            ref={node => {
+            inputRef={node => {
               this.taskInput = node;
             }}
           />
-          <span className="input-group-btn">
-            <button className="btn btn-success" type="button" onClick={this.handleAddClick}>
-              <i className="fa fa-plus" />
-            </button>
-          </span>
-        </div>
-      </div>
+          <InputGroup.Button>
+            <Button bsStyle="success" onClick={this.handleAddClick}>
+              <Glyphicon glyph="plus" />
+            </Button>
+          </InputGroup.Button>
+        </InputGroup>
+      </FormGroup>
     );
   }
 }
